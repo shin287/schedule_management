@@ -1,0 +1,43 @@
+<div class="coutainer mt-4">
+  <div class="mx-auto" style="max-width: 500px;">
+
+<h1 class="text-center mb-4">予定の編集</h1>
+
+<div class="fs-5">
+  <%= form_with model: @schedule do |f| %>
+    <div class="mb-3" style="margin-left: 8px;">
+      <%= f.label :title, "タイトル" %><br>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="mb-3" style="margin-left: 8px;">
+      <%= f.label :start_date, "開始日" %><br>
+      <%= f.date_field :start_date %>
+    </div>
+
+    <div class="mb-3" style="margin-left: 8px;">
+      <%= f.label :end_date, "終了日" %><br>
+      <%= f.date_field :end_date %>
+    </div>
+
+    <div class="mb-3" style="margin-left: 8px;">
+      <%= f.label :all_day, "終日" %><br>
+      <%= f.check_box :all_day %>
+    </div>
+
+    <div class="mb-3" style="margin-left: 8px;">
+      <%= f.label :memo, "スケジュールメモ" %><br>
+      <%= f.text_area :memo %>
+    </div>
+  </div>
+
+    <div style="margin: 16px;">
+      <%= f.submit "予定を更新する",class: "btn btn-primary btn-lg w-100" %><br>
+    </div>
+  <% end %>
+
+<p style="margin-left: 16px;"><%= link_to "予定詳細に戻る", schedule_path(@schedule), class: "btn btn-secondary" %></p>
+<p style="margin-left: 16px;"><%= link_to "予定一覧に戻る", schedules_path, class: "btn btn-secondary" %></p>
+
+  </div>
+</div>
