@@ -1,0 +1,39 @@
+<div class="container mt-4">
+
+<h1 class="text-center mb-4">予定一覧</h1>
+
+<p><%= link_to "+予定を追加", new_schedule_path,class: "btn btn-primary mb-3" %></p>
+
+<p>予定の合計数： <%= @schedules.count %></p>
+<p>本日の日付： <%= Date.current.strftime("%Y/%m/%d") %></p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>タイトル</th>
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>終日</th>
+      <th>更新日時</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @schedules.each do |schedule| %>
+      <tr>
+        <td><%= schedule.id %></td>
+        <td><%= schedule.title %></td>
+        <td><%= schedule.start_date.strftime("%Y/%m/%d") if schedule.start_date.present? %></td>
+        <td><%= schedule.end_date.strftime("%Y/%m/%d") if schedule.end_date.present? %></td>
+        <td><%= schedule.all_day ? "〇" : "" %></td>
+        <td><%= schedule.updated_at.in_time_zone("Tokyo").strftime("%Y/%m/%d %H:%M") %></td>
+        <td><%= link_to "詳細", schedule_path(schedule) %></td>
+        <td><%= link_to "編集", edit_schedule_path(schedule) %></td>
+        <td><%= link_to "削除", schedule_path(schedule), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <div class="mx-auto" style="max-width: 500px;">
+
+<h1 class="text-center mb-4">予定詳細</h1>
+
+<div class="fs-5">
+  <p class="mb-3">タイトル： <%= @schedule.title %></p>
+  <p class="mb-3">開始日： <%= @schedule.start_date.strftime("%Y/%m/%d") if @schedule.start_date.present? %></p>
+  <p class="mb-3">終了日： <%= @schedule.end_date.strftime("%Y/%m/%d") if @schedule.end_date.present? %></p>
+  <p class="mb-3">終日： <%= @schedule.all_day ? "〇" : "" %></p>
+  <p class="mb-3">スケジュールメモ： <%= @schedule.memo %></p>
+</div>
+
+<p><%= link_to "予定一覧に戻る", schedules_path, class: "btn btn-secondary" %></p>
+<p><%= link_to "予定を編集する", edit_schedule_path(@schedule), class: "btn btn-secondary" %></p>
+<p><%= link_to "予定を削除する", schedule_path(@schedule), data: {turbo_method: :delete, turbo_confirm: "本当に削除しますか？"}, class: "btn btn-secondary" %></p>
+
+  </div>
+</div>

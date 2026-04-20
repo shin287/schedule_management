@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      schedule: 予定
+    attributes:
+      schedule:
+        title: タイトル
+        start_date: 開始日
+        end_date: 終了日
+        all_day: 終日
+        memo: スケジュールメモ
+    errors:
+      messages:
+        blank: "を入力してください"
+        too_long: "は%{count}文字以内で入力してください"
+
+errors:
+  format: "%{attribute} %{message}"
